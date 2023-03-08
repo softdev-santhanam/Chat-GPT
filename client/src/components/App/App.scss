@@ -1,0 +1,161 @@
+html,
+body,
+#root,
+.App {
+  height: 100vh;
+  background-color: #fff;
+}
+.App {
+  display: flex;
+  flex-direction: column;
+}
+/* Add background color to the body */
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0;
+}
+
+/* Remove border color from the response list container */
+.response-list {
+  border: none;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.chatgpt-response {
+  border-radius: 10px;
+  background-color: #ececec;
+}
+
+.my-question {
+  border-radius: 10px;
+  background-color: #ececec;
+}
+
+/* Remove background color and add an SVG background for the submit button */
+#submit-button {
+  background: transparent
+    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path fill='grey' d='M2.01 21L23 12 2.01 3 2 10l15 2-15 2z'/></svg>")
+    no-repeat center center;
+  background-color: #ececec;
+  border: 1px solid #d4d4d4;
+  width: 40px;
+  height: 45px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#regenerate-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+#regenerate-response-button {
+  color: white;
+  border: none;
+  background: #10a37f;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.loading {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+#model-select-container {
+  display: flex;
+  justify-content: center;
+  margin: 1vw 2vw;
+  color: white;
+}
+
+#model-select-container select {
+  display: flex;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+}
+
+#model-select-container select option:not(:checked) {
+  background: #cecece;
+}
+
+#model-select-container select option {
+  background: #cecece;
+}
+
+.response-container-row {
+  display: flex !important;
+  height: 67vh !important;
+  width: 100%;
+  flex-direction: column;
+
+  .response-container {
+    height: auto !important;
+    width: 100%;
+    flex-wrap: nowrap;
+  }
+
+  .response-list {
+    height: 67vh !important;
+    width: 100%;
+    padding: 2vw;
+    flex-wrap: nowrap;
+  }
+}
+
+.bottom-container-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 25vh !important;
+  width: 100%;
+  background-color: #fff;
+
+  .bottom-container-data {
+    height: auto !important;
+    flex-wrap: nowrap;
+  }
+
+  .input-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 5px;
+  }
+}
+
+.header-logo-container {
+  height: 7vh !important;
+}
+
+@media (max-width: 768px) {
+  .bottom-container-data .form-control option {
+    font-size: 12px;
+  }
+}
+
+.header-logo-container {
+  background-color: #17a2b8;
+}
+
+.header-logo {
+  height: 40px;
+  width: 40px;
+}
+
+.logo-text {
+  color: #fff9f7;
+}

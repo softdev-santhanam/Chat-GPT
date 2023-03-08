@@ -1,6 +1,6 @@
 import { useEffect, useRef, useCallback } from 'react';
 import ContentEditable from 'react-contenteditable';
-import './PromptInput.css';
+import './PromptInput.scss';
 
 interface PromptInputProps {
   prompt: string;
@@ -36,7 +36,7 @@ const PromptInput: React.FC<PromptInputProps> = ({ prompt, onSubmit, updatePromp
       html={prompt}
       disabled={false}
       id="prompt-input"
-      className="prompt-input"
+      className="prompt-input shadow"
       onChange={(event) => updatePrompt(event.target.value)}
     />
   );
