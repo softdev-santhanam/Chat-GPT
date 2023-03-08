@@ -155,9 +155,9 @@ const App = () => {
           <p className="logo-text fs-2 m-0">Lystloc</p>
         </div>
       </Row>
-      <Row className="response-container-row">
+      <Row className="response-container-row w-100">
         <Col className="response-container p-0">
-          <div className="">
+          <div className="response-list-container w-100">
             <div className="response-list">
               <PromptResponseList
                 responseList={responseList}

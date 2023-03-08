@@ -96,7 +96,7 @@ body {
 .response-container-row {
   display: flex !important;
   height: 67vh !important;
-  width: 100%;
+  min-width: 100vw !important;
   flex-direction: column;
 
   .response-container {
