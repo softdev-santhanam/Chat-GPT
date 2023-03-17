@@ -3,17 +3,35 @@ const { Configuration, OpenAIApi } = require("openai");
 const app = express();
 const cors = require("cors");
 require("dotenv").config();
+const fs = require("fs");
+const fileName = "file-eon5qb5SmxHbH7BYaS16ghLC";
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
-  models: {
-    "gpt-3.5-turbo": "text-davinci-002",
-    "code-davinci-002": "davinci-codex",
-  },
-  endpoint: "https://api.openai.com/v1/chat/completions",
 });
 
 const openai = new OpenAIApi(configuration);
+
+const model = "curie:ft-personal-2023-03-15-02-50-26";
+
+const response = openai.createCompletion({
+  model,
+  prompt: "how many years of experience chennai packers have?",
+  temperature: 0,
+  max_tokens: 256,
+  top_p: 0,
+  frequency_penalty: 0,
+  presence_penalty: 0,
+  stop: ["END"],
+});
+
+response
+  .then((data) => {
+    console.log(data.data.choices[0].text);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 app.use(cors());
 app.use(express.json());
@@ -22,6 +40,7 @@ app.use("/", express.static(__dirname + "/frontend")); // Serves resources from 
 app.post("/get-prompt-result", async (req, res) => {
   // Get the prompt from the request body
   const { prompt, model = "gpt" } = req.body;
+  // console.log(model);
 
   // Check if prompt is present in the request
   if (!prompt) {
@@ -42,9 +61,17 @@ app.post("/get-prompt-result", async (req, res) => {
     }
 
     const completion = await openai.createCompletion({
-      model: model === "gpt" ? "text-davinci-002" : "davinci-codex", // model name
-      prompt: `Please reply below question in markdown format.\n ${prompt}`, // input prompt
-      max_tokens: model === "gpt" ? 4000 : 8000, // Use max 8000 tokens for codex model
+      model:
+        model === "gpt"
+          ? "davinci:ft-personal-2023-03-15-06-22-08"
+          : "davinci-codex",
+      prompt: prompt,
+      temperature: 0,
+      max_tokens: 256,
+      top_p: 0,
+      frequency_penalty: 0,
+      presence_penalty: 0,
+      stop: ["END"],
     });
     // Send the generated text as the response
     return res.send(completion.data.choices[0].text);

@@ -93,9 +93,23 @@ body {
   background: #cecece;
 }
 
+.header-logo-container {
+  height: 10vh !important;
+  background-color: #17a2b8;
+
+  .header-logo {
+    height: 40px;
+    width: 40px;
+  }
+  
+  .logo-text {
+    color: #fff9f7;
+  }
+}
+
 .response-container-row {
   display: flex !important;
-  height: 67vh !important;
+  height: 65vh !important;
   min-width: 100vw !important;
   flex-direction: column;
 
@@ -106,7 +120,7 @@ body {
   }
 
   .response-list {
-    height: 67vh !important;
+    height: 65vh !important;
     width: 100%;
     padding: 2vw;
     flex-wrap: nowrap;
@@ -137,25 +151,9 @@ body {
   }
 }
 
-.header-logo-container {
-  height: 7vh !important;
-}
-
 @media (max-width: 768px) {
   .bottom-container-data .form-control option {
     font-size: 12px;
   }
 }
 
-.header-logo-container {
-  background-color: #17a2b8;
-}
-
-.header-logo {
-  height: 40px;
-  width: 40px;
-}
-
-.logo-text {
-  color: #fff9f7;
-}

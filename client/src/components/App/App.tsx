@@ -4,7 +4,7 @@ import PromptInput from "../PromptInput/PromptInput";
 import "./App.scss";
 import { ResponseInterface } from "../PromptResponseList/response-interface";
 import PromptResponseList from "../PromptResponseList/PromptResponseList";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, Row, Dropdown } from "react-bootstrap";
 import Logo from "../../img/lystloc_logo.png";
 
 type ModelValueType = "gpt" | "codex" | "image";
@@ -185,30 +185,41 @@ const App = () => {
       )}
 
       <Row className="bottom-container-row  d-flex flex-column p-0 m-0">
-        <Col className="bottom-container-data">
-          <Form className="d-flex justify-content-center align-items-center ">
-            <Form.Group
-              controlId="model-select"
-              className="form pt-2 d-flex flex-column justify-content-center align-items-center"
-            >
-              <Form.Control
-                className="w-75"
-                size="sm"
-                as="select"
-                value={modelValue}
-                onChange={(event) =>
-                  setModelValue(event.target.value as ModelValueType)
-                }
-              >
-                <option value="gpt">GPT-3</option>
-                <option value="codex">Codex</option>
-                <option value="image">Create Image</option>
-              </Form.Control>
-            </Form.Group>
-          </Form>
-        </Col>
+        <div className="bottom-container-data">
+          <Dropdown drop="up-centered" className="d-flex justify-content-center align-items-center">
+            <Dropdown.Toggle variant="light" id="dropdown-basic">
+              Model
+            </Dropdown.Toggle>
 
-        <Col>
+            <Dropdown.Menu>
+              <Dropdown.Item
+                eventKey="gpt"
+                onSelect={() => setModelValue("gpt")}
+                active={modelValue === "gpt"}
+              >
+                GPT-3
+              </Dropdown.Item>
+
+              <Dropdown.Item
+                eventKey="codex"
+                onSelect={() => setModelValue("codex")}
+                active={modelValue === "codex"}
+              >
+                Codex
+              </Dropdown.Item>
+
+              <Dropdown.Item
+                eventKey="image"
+                onSelect={() => setModelValue("image")}
+                active={modelValue === "image"}
+              >
+                Image
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </div>
+
+        
           <div className="input-container gap-2 w-100">
             <PromptInput
               prompt={prompt}
@@ -222,7 +233,7 @@ const App = () => {
               onClick={() => getGPTResult()}
             ></Button>
           </div>
-        </Col>
+       
       </Row>
     </Container>
   );
